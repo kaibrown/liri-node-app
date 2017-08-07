@@ -9,6 +9,19 @@ var Twitter = require('twitter');
 
 var request = require('request');
 
+var DoThis = function () {
+    
+    fs.readFile("random.txt", "utf8", function(error, data) {
+
+    if (error) {
+        return console.log(error);
+    }
+
+    console.log(data);
+    choice(data);
+
+    });
+}
 
 var myTweets = function (){
 
@@ -67,6 +80,8 @@ var choice = function(caseData, functionData){
         case 'spotify-this-song' : mySpotify(functionData);
         break;
         case 'movie-this' : myMovies(functionData);
+        break;
+        case 'do-what-it-says' : DoThis(functionData);
         break;
         default: console.log("LIRI doesn't know that command.")
     }
