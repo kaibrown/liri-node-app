@@ -41,10 +41,21 @@ var mySpotify = function (song){
 var myMovies = function (movieName){
 
     request("http://www.omdbapi.com/?t=" + movieName + "&apikey=40e9cece", function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred 
+    if (error){
+        console.log('error:', error); 
+        }
+    var json = JSON.parse(body);
+
+    // Print the error if one occurred 
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
-    console.log('body:', body); // Print the HTML for the Google homepage. 
-    });
+    console.log('Title: ' + json.Title); // Print the HTML for the Google homepage. 
+     console.log('Year: '  + json.Year);
+      console.log('IMDB Rating: ' + json.imdbRating);
+       console.log('Country:  ' + json.country);
+        console.log('Language: ' + json.Language);
+         console.log('Plot: ' + json.Plot);
+          console.log('Actors: ' + json.Actors);
+});
 
 }
 
